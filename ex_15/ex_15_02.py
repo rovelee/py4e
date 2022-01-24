@@ -33,5 +33,10 @@ sqlstr = 'SELECT org, count FROM Counts ORDER BY count DESC LIMIT 10'
 for row in cur.execute(sqlstr):
     print(str(row[0]), row[1])
 
+org='edu'
+cur.execute('SELECT count FROM Counts WHERE org = ? ', (org, ))
+row = cur.fetchone()
+print('row:',row,'type:',type(row))
+
 conn.commit()
 cur.close()
